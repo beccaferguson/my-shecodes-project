@@ -21,7 +21,6 @@
   justify-content: center;
 }
 
-}
 .unit {
   position: relative;
   top: 10px;
@@ -76,15 +75,13 @@
 
 .current-wind {
   font-size: 15px;
-  color:black;
+  color: black;
 }
 
 .current-humidity {
   font-size: 15px;
   color: black;
   margin-bottom: 10px;
-}
-
 }
 
 .card {

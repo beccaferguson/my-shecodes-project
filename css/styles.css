@@ -1,0 +1,101 @@
+.info {
+  background-image: url(https://images.pexels.com/photos/53594/blue-clouds-day-fluffy-53594.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+  border-radius: 10px;
+  padding: 10px 40px;
+  font-family: "Nunito", sans-serif;
+}
+
+.searchBar {
+  border-radius: 10px;
+  margin-top: 10px;
+  text-align: center;
+  width: 500px;
+  border: solid 1px;
+  padding: 8px;
+  font-size: 15px;
+  display: inline-block !important;
+  margin-bottom: 15px;
+}
+#search-city {
+  display: flex;
+  justify-content: center;
+}
+
+}
+.unit {
+  position: relative;
+  top: 10px;
+  font-size: 25px;
+  background-color: transparent;
+  vertical-align: text-top;
+  margin-top: 70px;
+}
+
+#celsius-link {
+  text-decoration: none;
+}
+
+#farenheit-link {
+  text-decoration: none;
+}
+.current {
+  background: #fff;
+  border-radius: 30px;
+  opacity: 0.9;
+  padding-top: 15px;
+}
+
+.current-icon-now {
+  width: 200px;
+}
+
+.current-temp {
+  font-size: 60px;
+  font-weight: bold;
+  color: blue;
+}
+
+.current-weather-type {
+  font-size: 30px;
+}
+
+.current-minmax {
+  font-size: 20px;
+}
+
+.current-city {
+  font-size: 60px;
+  font-weight: bolder;
+  color: blueviolet;
+}
+
+.current-country {
+  font-size: 30px;
+  color: black;
+}
+
+.current-wind {
+  font-size: 15px;
+  color:black;
+}
+
+.current-humidity {
+  font-size: 15px;
+  color: black;
+  margin-bottom: 10px;
+}
+
+}
+
+.card {
+  opacity: 0.9;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 20px;
+}
+
+.card-text {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}

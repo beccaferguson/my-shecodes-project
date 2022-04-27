@@ -10,8 +10,14 @@ let days = [
 ];
 let day = days[now.getDay()];
 let hour = now.getHours();
+if (hour < 10) {
+  hour = `0${hour}`;
+}
 
 let minutes = now.getMinutes();
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
 
 let time = document.querySelector("#day-time");
 time.innerHTML = `${day}, ${hour}:${minutes}`;

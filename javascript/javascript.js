@@ -40,8 +40,11 @@ cityForm.addEventListener("submit", citySearch);
 //feature3
 function toFarenheit(event) {
   event.preventDefault();
+  let farenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   let temperatureElement = document.querySelector("#unit-temperature");
-  temperatureElement.innerHTML = 66;
+  celsiusLink.classList.remove("active");
+  farenheitLink.classList.add("active");
+  temperatureElement.innerHTML = Math.round(farenheitTemperature);
 }
 let farenheitLink = document.querySelector("#farenheit-link");
 farenheitLink.addEventListener("click", toFarenheit);
@@ -49,10 +52,14 @@ farenheitLink.addEventListener("click", toFarenheit);
 function toCelsius(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#unit-temperature");
-  temperatureElement.innerHTML = 19;
+  celsiusLink.classList.add("active");
+  farenheitLink.classList.remove("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", toCelsius);
+
+let celsiusTemperature = null;
 
 //week 5
 document.querySelector(".search-button").addEventListener("click", citySearch);
@@ -84,6 +91,8 @@ function showWeather(response) {
   document
     .querySelector("#icon")
     .setAttribute("alt", response.data.weather[0].description);
+
+  celsiusTemperature = response.data.main.temp;
 }
 
 function retrievePosition(position) {

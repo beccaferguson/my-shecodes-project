@@ -72,6 +72,9 @@ function showWeather(response) {
   let humidity = Math.round(response.data.main.humidity);
   document.querySelector(".current-humidity").innerHTML = humidity;
   console.log(response.data.weather);
+  document
+    .querySelector("#icon")
+    .setAttribute("src", `images/${response.data.weather[0].icon}.svg`);
 }
 
 function retrievePosition(position) {

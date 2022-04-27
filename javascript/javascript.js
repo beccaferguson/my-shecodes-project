@@ -75,6 +75,9 @@ function showWeather(response) {
   document
     .querySelector("#icon")
     .setAttribute("src", `images/${response.data.weather[0].icon}.svg`);
+  document
+    .querySelector("#icon")
+    .setAttribute("alt", response.data.weather[0].description);
 }
 
 function retrievePosition(position) {

@@ -93,6 +93,7 @@ function showWeather(response) {
     .setAttribute("alt", response.data.weather[0].description);
 
   celsiusTemperature = response.data.main.temp;
+  displayForecast();
 }
 
 function retrievePosition(position) {
@@ -104,4 +105,39 @@ function retrievePosition(position) {
 }
 function getGeoPosition() {
   navigator.geolocation.getCurrentPosition(retrievePosition);
+}
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = [
+    "Saturday",
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    ,
+  ];
+  let forecastHTML = `<div class = "row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+          <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card">
+              <img
+                src="images/01d.svg"
+                class="card-img-top"
+                alt="sunny snow icon"
+              />
+              <div class="card-body">
+                <p class="card-text">${day}</p>
+                </div>
+                <div class="card-text">H: 18º &nbsp; L: 3º</div>
+              </div>
+            </div>`;
+  });
+  forecastHTML = forecastHTML + ` </div>`;
+  forecastElement.innerHTML = forecastHTML;
 }

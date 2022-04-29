@@ -67,6 +67,14 @@ document
   .querySelector(".location-button")
   .addEventListener("click", getGeoPosition);
 
+function getForecast(coords) {
+  console.log(coords);
+  let apiKey = "3425d03ec05f82a0b0ba2682cedcbe27";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function showWeather(response) {
   let city = response.data.name;
   document.querySelector(".current-city").innerHTML = city;
@@ -93,7 +101,8 @@ function showWeather(response) {
     .setAttribute("alt", response.data.weather[0].description);
 
   celsiusTemperature = response.data.main.temp;
-  displayForecast();
+
+  getForecast(response.data.coord);
 }
 
 function retrievePosition(position) {
@@ -107,7 +116,8 @@ function getGeoPosition() {
   navigator.geolocation.getCurrentPosition(retrievePosition);
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let days = [

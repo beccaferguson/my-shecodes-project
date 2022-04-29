@@ -22,6 +22,21 @@ if (minutes < 10) {
 let time = document.querySelector("#day-time");
 time.innerHTML = `${day}, ${hour}:${minutes}`;
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return days[day];
+}
+
 //feature2
 
 function citySearch(event) {
@@ -117,37 +132,33 @@ function getGeoPosition() {
 }
 
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-
-  let days = [
-    "Saturday",
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    ,
-  ];
   let forecastHTML = `<div class = "row">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    let maxTemp = Math.round(forecastDay.temp.max);
+    let minTemp = Math.round(forecastDay.temp.min);
+
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
           <div class="col-lg-2 col-md-4 col-sm-6">
             <div class="card">
               <img
-                src="images/01d.svg"
+                src="images/${forecastDay.weather[0].icon}.svg"
                 class="card-img-top"
                 alt="sunny snow icon"
               />
               <div class="card-body">
-                <p class="card-text">${day}</p>
+                <p class="card-text">${formatDay(forecastDay.dt)}</p>
                 </div>
-                <div class="card-text">H: 18º &nbsp; L: 3º</div>
+                <div class="card-text">H: <span>${maxTemp}</span>º &nbsp; L: <span>${minTemp}</span>º</div>
               </div>
             </div>`;
+    }
   });
+
   forecastHTML = forecastHTML + ` </div>`;
   forecastElement.innerHTML = forecastHTML;
 }
